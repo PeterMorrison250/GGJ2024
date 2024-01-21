@@ -1,2 +1,2 @@
-# GGJ2024-
+# GGJ2024
 Theme: Make Me Laugh
