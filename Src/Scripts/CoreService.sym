@@ -1,0 +1,171 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  0 A$CoreService$100                                              000027 GR
+  0 A$CoreService$113                                              000028 GR
+  0 A$CoreService$115                                              00002A GR
+  0 A$CoreService$116                                              00002B GR
+  0 A$CoreService$117                                              00002D GR
+  0 A$CoreService$118                                              00002F GR
+  0 A$CoreService$122                                              000030 GR
+  0 A$CoreService$123                                              000031 GR
+  0 A$CoreService$124                                              000032 GR
+  0 A$CoreService$125                                              000034 GR
+  0 A$CoreService$126                                              000035 GR
+  0 A$CoreService$127                                              000036 GR
+  0 A$CoreService$128                                              000038 GR
+  0 A$CoreService$129                                              000039 GR
+  0 A$CoreService$130                                              00003B GR
+  0 A$CoreService$131                                              00003D GR
+  0 A$CoreService$132                                              00003F GR
+  0 A$CoreService$133                                              000041 GR
+  0 A$CoreService$141                                              000043 GR
+  0 A$CoreService$142                                              000045 GR
+  0 A$CoreService$146                                              000047 GR
+  0 A$CoreService$154                                              000049 GR
+  0 A$CoreService$155                                              00004B GR
+  0 A$CoreService$159                                              00004D GR
+  0 A$CoreService$167                                              00004F GR
+  0 A$CoreService$168                                              000051 GR
+  0 A$CoreService$172                                              000053 GR
+  0 A$CoreService$180                                              000055 GR
+  0 A$CoreService$181                                              000057 GR
+  0 A$CoreService$189                                              000059 GR
+  0 A$CoreService$190                                              00005A GR
+  0 A$CoreService$191                                              00005D GR
+  0 A$CoreService$192                                              000060 GR
+  0 A$CoreService$196                                              000061 GR
+  0 A$CoreService$204                                              000062 GR
+  0 A$CoreService$217                                              000064 GR
+  0 A$CoreService$219                                              000066 GR
+  0 A$CoreService$220                                              000067 GR
+  0 A$CoreService$221                                              000069 GR
+  0 A$CoreService$222                                              00006B GR
+  0 A$CoreService$226                                              00006C GR
+  0 A$CoreService$227                                              00006D GR
+  0 A$CoreService$228                                              00006E GR
+  0 A$CoreService$229                                              000070 GR
+  0 A$CoreService$230                                              000071 GR
+  0 A$CoreService$231                                              000072 GR
+  0 A$CoreService$232                                              000074 GR
+  0 A$CoreService$233                                              000075 GR
+  0 A$CoreService$234                                              000077 GR
+  0 A$CoreService$235                                              000079 GR
+  0 A$CoreService$243                                              00007B GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$CoreService$244                                              00007D GR
+  0 A$CoreService$248                                              00007F GR
+  0 A$CoreService$256                                              000081 GR
+  0 A$CoreService$257                                              000083 GR
+  0 A$CoreService$261                                              000085 GR
+  0 A$CoreService$269                                              000087 GR
+  0 A$CoreService$270                                              000089 GR
+  0 A$CoreService$278                                              00008B GR
+  0 A$CoreService$279                                              00008C GR
+  0 A$CoreService$280                                              00008F GR
+  0 A$CoreService$281                                              000092 GR
+  0 A$CoreService$285                                              000093 GR
+  0 A$CoreService$293                                              000094 GR
+  0 A$CoreService$55                                               000000 GR
+  0 A$CoreService$59                                               000001 GR
+  0 A$CoreService$61                                               000004 GR
+  0 A$CoreService$62                                               000006 GR
+  0 A$CoreService$63                                               000007 GR
+  0 A$CoreService$64                                               000008 GR
+  0 A$CoreService$65                                               000009 GR
+  0 A$CoreService$66                                               00000A GR
+  0 A$CoreService$67                                               00000B GR
+  0 A$CoreService$68                                               00000C GR
+  0 A$CoreService$69                                               00000D GR
+  0 A$CoreService$70                                               00000F GR
+  0 A$CoreService$71                                               000011 GR
+  0 A$CoreService$72                                               000013 GR
+  0 A$CoreService$73                                               000015 GR
+  0 A$CoreService$74                                               000016 GR
+  0 A$CoreService$76                                               000018 GR
+  0 A$CoreService$77                                               00001A GR
+  0 A$CoreService$78                                               00001C GR
+  0 A$CoreService$80                                               00001D GR
+  0 A$CoreService$84                                               00001F GR
+  0 A$CoreService$88                                               000022 GR
+  0 A$CoreService$89                                               000023 GR
+  0 A$CoreService$94                                               000025 GR
+  0 A$CoreService$95                                               000026 GR
+  0 C$CoreService.c$10$2_0$143                                  =  000027 GR
+  0 C$CoreService.c$12$2_0$146                                  =  000028 GR
+  0 C$CoreService.c$13$2_0$146                                  =  000061 GR
+  0 C$CoreService.c$14$3_0$147                                  =  000030 GR
+  0 C$CoreService.c$15$4_0$148                                  =  000043 GR
+  0 C$CoreService.c$16$4_0$148                                  =  000043 GR
+  0 C$CoreService.c$17$4_0$148                                  =  000047 GR
+  0 C$CoreService.c$18$4_0$148                                  =  000049 GR
+  0 C$CoreService.c$19$4_0$148                                  =  000049 GR
+  0 C$CoreService.c$20$4_0$148                                  =  00004D GR
+  0 C$CoreService.c$21$4_0$148                                  =  00004F GR
+  0 C$CoreService.c$22$4_0$148                                  =  00004F GR
+  0 C$CoreService.c$23$4_0$148                                  =  000053 GR
+  0 C$CoreService.c$24$4_0$148                                  =  000055 GR
+  0 C$CoreService.c$25$4_0$148                                  =  000055 GR
+  0 C$CoreService.c$27$3_0$147                                  =  000059 GR
+  0 C$CoreService.c$28$3_0$147                                  =  000059 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 C$CoreService.c$30$2_0$146                                  =  000062 GR
+  0 C$CoreService.c$32$2_0$150                                  =  000064 GR
+  0 C$CoreService.c$33$2_0$150                                  =  000093 GR
+  0 C$CoreService.c$34$3_0$151                                  =  00006C GR
+  0 C$CoreService.c$35$4_0$152                                  =  00007B GR
+  0 C$CoreService.c$36$4_0$152                                  =  00007B GR
+  0 C$CoreService.c$37$4_0$152                                  =  00007F GR
+  0 C$CoreService.c$38$4_0$152                                  =  000081 GR
+  0 C$CoreService.c$39$4_0$152                                  =  000081 GR
+  0 C$CoreService.c$40$4_0$152                                  =  000085 GR
+  0 C$CoreService.c$41$4_0$152                                  =  000087 GR
+  0 C$CoreService.c$42$4_0$152                                  =  000087 GR
+  0 C$CoreService.c$44$3_0$151                                  =  00008B GR
+  0 C$CoreService.c$45$3_0$151                                  =  00008B GR
+  0 C$CoreService.c$47$2_0$150                                  =  000094 GR
+  0 C$CoreService.c$5$0_0$143                                   =  000000 GR
+  0 C$CoreService.c$7$2_0$143                                   =  000022 GR
+  0 C$CoreService.c$8$3_0$144                                   =  00001F GR
+  0 G$fade_in$0$0                                               =  000064 GR
+  0 G$fade_out$0$0                                              =  000028 GR
+  0 G$performant_delay$0$0                                      =  000000 GR
+  0 XG$fade_in$0$0                                              =  000094 GR
+  0 XG$fade_out$0$0                                             =  000062 GR
+  0 XG$performant_delay$0$0                                     =  000027 GR
+    _BGP_REG                                                       ****** GX
+  0 _fade_in                                                       000064 GR
+  0 _fade_out                                                      000028 GR
+  0 _performant_delay                                              000000 GR
+    _wait_vbl_done                                                 ****** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 4
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size     96   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size      0   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size      0   flags    0
+   8 _CABS                                      size      0   flags    8
+

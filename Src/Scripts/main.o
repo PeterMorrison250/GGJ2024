@@ -1,0 +1,48 @@
+;!FILE main.asm
+XL3
+H 9 areas 12 global symbols
+M main
+O -msm83
+S .__.ABS. Def000000
+S _fade_in Ref000000
+S _performance_main Ref000000
+A _CODE size B flags 0 addr 0
+S C$main.c$11$1_0$143 Def000000
+S C$main.c$12$1_0$143 Def000003
+S _main Def000000
+S C$main.c$16$1_0$143 Def000009
+S C$main.c$14$2_0$144 Def000003
+S XG$main$0$0 Def000009
+S A$main$70 Def000006
+S A$main$61 Def000000
+S C$main.c$9$0_0$143 Def000000
+S A$main$78 Def000009
+S A$main$69 Def000003
+S G$main$0$0 Def000000
+A _DATA size 0 flags 0 addr 0
+A _INITIALIZED size 1 flags 0 addr 0
+S _IsPerformanceMode Def000000
+S G$IsPerformanceMode$0_0$0 Def000000
+A _DABS size 0 flags 8 addr 0
+A _HOME size 0 flags 0 addr 0
+A _GSINIT size 0 flags 0 addr 0
+A _GSFINAL size 0 flags 0 addr 0
+A _INITIALIZER size 1 flags 0 addr 0
+S Fmain$__xinit_IsPerformanceMode$0_0$0 Def000000
+A _CABS size 0 flags 8 addr 0
+T 00 00 00
+R 00 00 02 00
+T 00 00 00
+R 00 00 02 00
+T 00 00 00
+R 00 00 00 00
+T 00 00 00 CD 00 00
+R 00 00 00 00 02 04 01 00
+T 03 00 00
+R 00 00 00 00
+T 03 00 00 FA 00 00 CD 00 00 18 F8
+R 00 00 00 00 00 04 02 00 02 07 02 00
+T 00 00 00
+R 00 00 07 00
+T 00 00 00 01
+R 00 00 07 00

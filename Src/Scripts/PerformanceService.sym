@@ -1,0 +1,448 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 1
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+    .__.$$$.                                                    =  002710 L
+    .__.ABS.                                                    =  000000 G
+    .__.CPU.                                                    =  000000 L
+    .__.H$L.                                                    =  000000 L
+  0 A$PerformanceService$102                                       00001B GR
+  0 A$PerformanceService$103                                       00001D GR
+  0 A$PerformanceService$104                                       00001F GR
+  0 A$PerformanceService$112                                       000021 GR
+  0 A$PerformanceService$236                                       000092 GR
+  0 A$PerformanceService$238                                       000093 GR
+  0 A$PerformanceService$239                                       000096 GR
+  0 A$PerformanceService$241                                       000098 GR
+  0 A$PerformanceService$242                                       000099 GR
+  0 A$PerformanceService$243                                       00009A GR
+  0 A$PerformanceService$244                                       00009B GR
+  0 A$PerformanceService$245                                       00009C GR
+  0 A$PerformanceService$246                                       00009E GR
+  0 A$PerformanceService$248                                       00009F GR
+  0 A$PerformanceService$250                                       0000A2 GR
+  0 A$PerformanceService$251                                       0000A4 GR
+  0 A$PerformanceService$252                                       0000A5 GR
+  0 A$PerformanceService$263                                       0000A6 GR
+  0 A$PerformanceService$276                                       0000A7 GR
+  0 A$PerformanceService$277                                       0000AA GR
+  0 A$PerformanceService$278                                       0000AB GR
+  0 A$PerformanceService$279                                       0000AE GR
+  0 A$PerformanceService$280                                       0000AF GR
+  0 A$PerformanceService$281                                       0000B2 GR
+  0 A$PerformanceService$285                                       0000B4 GR
+  0 A$PerformanceService$286                                       0000B6 GR
+  0 A$PerformanceService$287                                       0000B8 GR
+  0 A$PerformanceService$291                                       0000BB GR
+  0 A$PerformanceService$299                                       0000BC GR
+  0 A$PerformanceService$312                                       0000BF GR
+  0 A$PerformanceService$313                                       0000C0 GR
+  0 A$PerformanceService$314                                       0000C1 GR
+  0 A$PerformanceService$319                                       0000C3 GR
+  0 A$PerformanceService$320                                       0000C4 GR
+  0 A$PerformanceService$321                                       0000C5 GR
+  0 A$PerformanceService$325                                       0000C6 GR
+  0 A$PerformanceService$327                                       0000C7 GR
+  0 A$PerformanceService$328                                       0000C8 GR
+  0 A$PerformanceService$329                                       0000C9 GR
+  0 A$PerformanceService$330                                       0000CA GR
+  0 A$PerformanceService$331                                       0000CB GR
+  0 A$PerformanceService$332                                       0000CD GR
+  0 A$PerformanceService$334                                       0000CE GR
+  0 A$PerformanceService$336                                       0000D1 GR
+  0 A$PerformanceService$337                                       0000D3 GR
+  0 A$PerformanceService$338                                       0000D4 GR
+  0 A$PerformanceService$342                                       0000D5 GR
+  0 A$PerformanceService$343                                       0000D6 GR
+  0 A$PerformanceService$344                                       0000D9 GR
+  0 A$PerformanceService$345                                       0000DC GR
+  0 A$PerformanceService$349                                       0000DD GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 2
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$PerformanceService$354                                       0000DF GR
+  0 A$PerformanceService$355                                       0000E0 GR
+  0 A$PerformanceService$356                                       0000E1 GR
+  0 A$PerformanceService$361                                       0000E3 GR
+  0 A$PerformanceService$362                                       0000E4 GR
+  0 A$PerformanceService$363                                       0000E5 GR
+  0 A$PerformanceService$367                                       0000E6 GR
+  0 A$PerformanceService$369                                       0000E7 GR
+  0 A$PerformanceService$370                                       0000E8 GR
+  0 A$PerformanceService$371                                       0000E9 GR
+  0 A$PerformanceService$372                                       0000EA GR
+  0 A$PerformanceService$373                                       0000EB GR
+  0 A$PerformanceService$374                                       0000ED GR
+  0 A$PerformanceService$376                                       0000EE GR
+  0 A$PerformanceService$378                                       0000F1 GR
+  0 A$PerformanceService$379                                       0000F3 GR
+  0 A$PerformanceService$380                                       0000F4 GR
+  0 A$PerformanceService$384                                       0000F5 GR
+  0 A$PerformanceService$385                                       0000F6 GR
+  0 A$PerformanceService$386                                       0000F9 GR
+  0 A$PerformanceService$387                                       0000FC GR
+  0 A$PerformanceService$391                                       0000FD GR
+  0 A$PerformanceService$396                                       0000FF GR
+  0 A$PerformanceService$407                                       000102 GR
+  0 A$PerformanceService$417                                       000105 GR
+  0 A$PerformanceService$420                                       000106 GR
+  0 A$PerformanceService$421                                       000109 GR
+  0 A$PerformanceService$422                                       00010B GR
+  0 A$PerformanceService$423                                       00010C GR
+  0 A$PerformanceService$425                                       00010E GR
+  0 A$PerformanceService$426                                       000111 GR
+  0 A$PerformanceService$428                                       000113 GR
+  0 A$PerformanceService$429                                       000116 GR
+  0 A$PerformanceService$431                                       000118 GR
+  0 A$PerformanceService$432                                       000119 GR
+  0 A$PerformanceService$433                                       00011C GR
+  0 A$PerformanceService$434                                       00011E GR
+  0 A$PerformanceService$435                                       000121 GR
+  0 A$PerformanceService$439                                       000122 GR
+  0 A$PerformanceService$440                                       000123 GR
+  0 A$PerformanceService$441                                       000125 GR
+  0 A$PerformanceService$443                                       000127 GR
+  0 A$PerformanceService$444                                       00012A GR
+  0 A$PerformanceService$446                                       00012C GR
+  0 A$PerformanceService$448                                       00012F GR
+  0 A$PerformanceService$449                                       000131 GR
+  0 A$PerformanceService$450                                       000132 GR
+  0 A$PerformanceService$452                                       000134 GR
+  0 A$PerformanceService$453                                       000137 GR
+  0 A$PerformanceService$455                                       000139 GR
+  0 A$PerformanceService$457                                       00013C GR
+  0 A$PerformanceService$458                                       00013E GR
+  0 A$PerformanceService$459                                       00013F GR
+  0 A$PerformanceService$461                                       000141 GR
+  0 A$PerformanceService$462                                       000144 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 3
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$PerformanceService$464                                       000146 GR
+  0 A$PerformanceService$466                                       000149 GR
+  0 A$PerformanceService$467                                       00014B GR
+  0 A$PerformanceService$468                                       00014C GR
+  0 A$PerformanceService$472                                       00014E GR
+  0 A$PerformanceService$477                                       00014F GR
+  0 A$PerformanceService$478                                       000151 GR
+  0 A$PerformanceService$479                                       000152 GR
+  0 A$PerformanceService$481                                       000154 GR
+  0 A$PerformanceService$482                                       000157 GR
+  0 A$PerformanceService$484                                       000159 GR
+  0 A$PerformanceService$486                                       00015C GR
+  0 A$PerformanceService$487                                       00015E GR
+  0 A$PerformanceService$488                                       00015F GR
+  0 A$PerformanceService$490                                       000161 GR
+  0 A$PerformanceService$491                                       000164 GR
+  0 A$PerformanceService$493                                       000166 GR
+  0 A$PerformanceService$495                                       000169 GR
+  0 A$PerformanceService$496                                       00016B GR
+  0 A$PerformanceService$497                                       00016C GR
+  0 A$PerformanceService$499                                       00016E GR
+  0 A$PerformanceService$500                                       000171 GR
+  0 A$PerformanceService$502                                       000173 GR
+  0 A$PerformanceService$504                                       000176 GR
+  0 A$PerformanceService$505                                       000178 GR
+  0 A$PerformanceService$506                                       000179 GR
+  0 A$PerformanceService$510                                       00017B GR
+  0 A$PerformanceService$513                                       00017C GR
+  0 A$PerformanceService$514                                       00017F GR
+  0 A$PerformanceService$516                                       000181 GR
+  0 A$PerformanceService$518                                       000184 GR
+  0 A$PerformanceService$519                                       000186 GR
+  0 A$PerformanceService$520                                       000187 GR
+  0 A$PerformanceService$522                                       000189 GR
+  0 A$PerformanceService$523                                       00018C GR
+  0 A$PerformanceService$525                                       00018E GR
+  0 A$PerformanceService$527                                       000191 GR
+  0 A$PerformanceService$528                                       000193 GR
+  0 A$PerformanceService$529                                       000194 GR
+  0 A$PerformanceService$531                                       000196 GR
+  0 A$PerformanceService$532                                       000199 GR
+  0 A$PerformanceService$534                                       00019B GR
+  0 A$PerformanceService$536                                       00019E GR
+  0 A$PerformanceService$537                                       0001A0 GR
+  0 A$PerformanceService$538                                       0001A1 GR
+  0 A$PerformanceService$549                                       0001A3 GR
+  0 A$PerformanceService$560                                       0001A4 GR
+  0 A$PerformanceService$562                                       0001A7 GR
+  0 A$PerformanceService$563                                       0001A8 GR
+  0 A$PerformanceService$564                                       0001A9 GR
+  0 A$PerformanceService$565                                       0001AA GR
+  0 A$PerformanceService$566                                       0001AB GR
+  0 A$PerformanceService$568                                       0001AC GR
+  0 A$PerformanceService$570                                       0001AF GR
+  0 A$PerformanceService$571                                       0001B0 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 4
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$PerformanceService$572                                       0001B1 GR
+  0 A$PerformanceService$573                                       0001B2 GR
+  0 A$PerformanceService$574                                       0001B3 GR
+  0 A$PerformanceService$576                                       0001B4 GR
+  0 A$PerformanceService$578                                       0001B7 GR
+  0 A$PerformanceService$579                                       0001B8 GR
+  0 A$PerformanceService$580                                       0001B9 GR
+  0 A$PerformanceService$581                                       0001BA GR
+  0 A$PerformanceService$582                                       0001BB GR
+  0 A$PerformanceService$585                                       0001BC GR
+  0 A$PerformanceService$586                                       0001BF GR
+  0 A$PerformanceService$587                                       0001C1 GR
+  0 A$PerformanceService$588                                       0001C2 GR
+  0 A$PerformanceService$590                                       0001C4 GR
+  0 A$PerformanceService$591                                       0001C7 GR
+  0 A$PerformanceService$593                                       0001C9 GR
+  0 A$PerformanceService$595                                       0001CC GR
+  0 A$PerformanceService$596                                       0001CF GR
+  0 A$PerformanceService$597                                       0001D0 GR
+  0 A$PerformanceService$608                                       0001D2 GR
+  0 A$PerformanceService$621                                       0001D5 GR
+  0 A$PerformanceService$624                                       0001D6 GR
+  0 A$PerformanceService$627                                       0001D7 GR
+  0 A$PerformanceService$628                                       0001D8 GR
+  0 A$PerformanceService$629                                       0001D9 GR
+  0 A$PerformanceService$630                                       0001DA GR
+  0 A$PerformanceService$631                                       0001DC GR
+  0 A$PerformanceService$632                                       0001DD GR
+  0 A$PerformanceService$633                                       0001E0 GR
+  0 A$PerformanceService$637                                       0001E1 GR
+  0 A$PerformanceService$645                                       0001E3 GR
+  0 A$PerformanceService$658                                       0001E4 GR
+  0 A$PerformanceService$659                                       0001E7 GR
+  0 A$PerformanceService$660                                       0001E8 GR
+  0 A$PerformanceService$661                                       0001EB GR
+  0 A$PerformanceService$662                                       0001EC GR
+  0 A$PerformanceService$663                                       0001EF GR
+  0 A$PerformanceService$667                                       0001F1 GR
+  0 A$PerformanceService$668                                       0001F4 GR
+  0 A$PerformanceService$669                                       0001F5 GR
+  0 A$PerformanceService$670                                       0001F8 GR
+  0 A$PerformanceService$671                                       0001F9 GR
+  0 A$PerformanceService$672                                       0001FA GR
+  0 A$PerformanceService$673                                       0001FB GR
+  0 A$PerformanceService$674                                       0001FC GR
+  0 A$PerformanceService$675                                       0001FF GR
+  0 A$PerformanceService$683                                       000201 GR
+  0 A$PerformanceService$696                                       000202 GR
+  0 A$PerformanceService$697                                       000203 GR
+  0 A$PerformanceService$698                                       000206 GR
+  0 A$PerformanceService$699                                       000209 GR
+  0 A$PerformanceService$703                                       00020A GR
+  0 A$PerformanceService$704                                       00020B GR
+  0 A$PerformanceService$708                                       00020C GR
+  0 A$PerformanceService$709                                       00020D GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 5
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$PerformanceService$710                                       00020E GR
+  0 A$PerformanceService$714                                       00020F GR
+  0 A$PerformanceService$715                                       000211 GR
+  0 A$PerformanceService$716                                       000213 GR
+  0 A$PerformanceService$720                                       000215 GR
+  0 A$PerformanceService$721                                       000217 GR
+  0 A$PerformanceService$722                                       000219 GR
+  0 A$PerformanceService$730                                       00021B GR
+  0 A$PerformanceService$740                                       00021C GR
+  0 A$PerformanceService$741                                       00021D GR
+  0 A$PerformanceService$745                                       00021E GR
+  0 A$PerformanceService$746                                       00021F GR
+  0 A$PerformanceService$750                                       000220 GR
+  0 A$PerformanceService$754                                       000222 GR
+  0 A$PerformanceService$755                                       000223 GR
+  0 A$PerformanceService$756                                       000226 GR
+  0 A$PerformanceService$757                                       000227 GR
+  0 A$PerformanceService$758                                       000228 GR
+  0 A$PerformanceService$759                                       000229 GR
+  0 A$PerformanceService$760                                       00022C GR
+  0 A$PerformanceService$764                                       00022D GR
+  0 A$PerformanceService$765                                       00022E GR
+  0 A$PerformanceService$766                                       000230 GR
+  0 A$PerformanceService$767                                       000232 GR
+  0 A$PerformanceService$769                                       000233 GR
+  0 A$PerformanceService$771                                       000234 GR
+  0 A$PerformanceService$772                                       000235 GR
+  0 A$PerformanceService$773                                       000236 GR
+  0 A$PerformanceService$777                                       000238 GR
+  0 A$PerformanceService$778                                       00023B GR
+  0 A$PerformanceService$779                                       00023D GR
+  0 A$PerformanceService$783                                       00023F GR
+  0 A$PerformanceService$784                                       000240 GR
+  0 A$PerformanceService$785                                       000243 GR
+  0 A$PerformanceService$786                                       000244 GR
+  0 A$PerformanceService$787                                       000245 GR
+  0 A$PerformanceService$788                                       000246 GR
+  0 A$PerformanceService$789                                       000249 GR
+  0 A$PerformanceService$79                                        000000 GR
+  0 A$PerformanceService$793                                       00024A GR
+  0 A$PerformanceService$798                                       00024C GR
+  0 A$PerformanceService$799                                       00024D GR
+  0 A$PerformanceService$804                                       00024E GR
+  0 A$PerformanceService$82                                        000001 GR
+  0 A$PerformanceService$83                                        000004 GR
+  0 A$PerformanceService$84                                        000006 GR
+  0 A$PerformanceService$85                                        000007 GR
+  0 A$PerformanceService$87                                        000009 GR
+  0 A$PerformanceService$88                                        00000C GR
+  0 A$PerformanceService$90                                        00000E GR
+  0 A$PerformanceService$91                                        000011 GR
+  0 A$PerformanceService$93                                        000013 GR
+  0 A$PerformanceService$94                                        000014 GR
+  0 A$PerformanceService$95                                        000015 GR
+  0 A$PerformanceService$96                                        000016 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 6
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 A$PerformanceService$97                                        000017 GR
+  0 A$PerformanceService$98                                        000018 GR
+  0 C$PerformanceService.c$100$1_0$196                          =  000122 GR
+  0 C$PerformanceService.c$108$2_0$197                          =  00014E GR
+  0 C$PerformanceService.c$110$1_0$196                          =  00014F GR
+  0 C$PerformanceService.c$118$2_0$198                          =  00017B GR
+  0 C$PerformanceService.c$126$1_0$196                          =  0001A3 GR
+  0 C$PerformanceService.c$127$1_0$196                          =  0001A3 GR
+  0 C$PerformanceService.c$129$1_0$256                          =  0001A4 GR
+  0 C$PerformanceService.c$134$3_0$256                          =  0001D2 GR
+  0 C$PerformanceService.c$135$3_0$256                          =  0001D2 GR
+  0 C$PerformanceService.c$137$3_0$270                          =  0001D5 GR
+  0 C$PerformanceService.c$141$1_0$270                          =  0001D5 GR
+  0 C$PerformanceService.c$142$1_0$270                          =  0001E1 GR
+  0 C$PerformanceService.c$144$1_0$270                          =  0001E3 GR
+  0 C$PerformanceService.c$146$1_0$271                          =  0001E4 GR
+  0 C$PerformanceService.c$147$1_0$271                          =  0001E4 GR
+  0 C$PerformanceService.c$148$1_0$271                          =  0001F1 GR
+  0 C$PerformanceService.c$149$1_0$271                          =  000201 GR
+  0 C$PerformanceService.c$151$1_0$273                          =  000202 GR
+  0 C$PerformanceService.c$153$1_0$273                          =  000202 GR
+  0 C$PerformanceService.c$156$1_0$273                          =  00020A GR
+  0 C$PerformanceService.c$157$1_0$273                          =  00020C GR
+  0 C$PerformanceService.c$159$1_0$273                          =  00020F GR
+  0 C$PerformanceService.c$160$1_0$273                          =  000215 GR
+  0 C$PerformanceService.c$161$1_0$273                          =  00021B GR
+  0 C$PerformanceService.c$163$1_0$275                          =  00021C GR
+  0 C$PerformanceService.c$165$1_0$275                          =  00021E GR
+  0 C$PerformanceService.c$167$2_0$276                          =  000220 GR
+  0 C$PerformanceService.c$171$1_1$277                          =  000222 GR
+  0 C$PerformanceService.c$173$1_1$277                          =  00022D GR
+  0 C$PerformanceService.c$175$2_1$278                          =  000238 GR
+  0 C$PerformanceService.c$178$3_1$279                          =  00023F GR
+  0 C$PerformanceService.c$180$1_1$277                          =  00024A GR
+  0 C$PerformanceService.c$182$1_1$275                          =  00024E GR
+  0 C$PerformanceService.c$50$0_0$170                           =  000000 GR
+  0 C$PerformanceService.c$52$1_0$170                           =  00001B GR
+  0 C$PerformanceService.c$53$1_0$170                           =  000021 GR
+  0 C$PerformanceService.c$55$1_0$175                           =  000092 GR
+  0 C$PerformanceService.c$57$3_0$175                           =  0000A6 GR
+  0 C$PerformanceService.c$58$3_0$175                           =  0000A6 GR
+  0 C$PerformanceService.c$60$3_0$182                           =  0000A7 GR
+  0 C$PerformanceService.c$61$1_0$182                           =  0000A7 GR
+  0 C$PerformanceService.c$62$1_0$182                           =  0000B4 GR
+  0 C$PerformanceService.c$63$1_0$182                           =  0000BB GR
+  0 C$PerformanceService.c$64$1_0$182                           =  0000BC GR
+  0 C$PerformanceService.c$66$1_0$184                           =  0000BF GR
+  0 C$PerformanceService.c$68$1_0$184                           =  0000BF GR
+  0 C$PerformanceService.c$70$1_0$184                           =  0000C3 GR
+  0 C$PerformanceService.c$72$3_0$186                           =  0000C6 GR
+  0 C$PerformanceService.c$74$3_0$186                           =  0000D5 GR
+  0 C$PerformanceService.c$76$2_0$185                           =  0000DD GR
+  0 C$PerformanceService.c$79$1_0$184                           =  0000DF GR
+  0 C$PerformanceService.c$81$1_0$184                           =  0000E3 GR
+  0 C$PerformanceService.c$83$3_0$188                           =  0000E6 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 7
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 C$PerformanceService.c$85$3_0$188                           =  0000F5 GR
+  0 C$PerformanceService.c$87$2_0$187                           =  0000FD GR
+  0 C$PerformanceService.c$90$1_0$184                           =  0000FF GR
+  0 C$PerformanceService.c$91$1_0$184                           =  000102 GR
+  0 C$PerformanceService.c$93$1_0$184                           =  000102 GR
+  0 C$PerformanceService.c$95$1_0$196                           =  000105 GR
+  7 FPerformanceService$__xinit_JesterTiles$0_0$0               =  0008F8 GR
+  7 FPerformanceService$__xinit_PerformanceBkgTileMap$0_0$0     =  000790 GR
+  7 FPerformanceService$__xinit_PerformanceBkgTiles$0_0$0       =  000000 GR
+  0 G$JesterMetasprite$0_0$0                                    =  000022 GR
+  2 G$JesterTiles$0_0$0                                         =  0008F8 GR
+  2 G$PerformanceBkgTileMap$0_0$0                               =  000790 GR
+  2 G$PerformanceBkgTiles$0_0$0                                 =  000000 GR
+  0 G$animate_pointer$0$0                                       =  0000BF GR
+  0 G$crowd_reaction$0$0                                        =  000105 GR
+  0 G$hide_crowd_reaction$0$0                                   =  0001A4 GR
+  0 G$init_jester$0$0                                           =  000000 GR
+  0 G$init_performance$0$0                                      =  000202 GR
+  0 G$init_performance_bkg$0$0                                  =  0001E4 GR
+  0 G$init_pointer$0$0                                          =  000092 GR
+  0 G$init_sprites$0$0                                          =  0000A7 GR
+  0 G$perform$0$0                                               =  0001D5 GR
+  0 G$performance_main$0$0                                      =  00021C GR
+  0 XG$animate_pointer$0$0                                      =  000102 GR
+  0 XG$crowd_reaction$0$0                                       =  0001A3 GR
+  0 XG$hide_crowd_reaction$0$0                                  =  0001D2 GR
+  0 XG$init_jester$0$0                                          =  000021 GR
+  0 XG$init_performance$0$0                                     =  00021B GR
+  0 XG$init_performance_bkg$0$0                                 =  000201 GR
+  0 XG$init_pointer$0$0                                         =  0000A6 GR
+  0 XG$init_sprites$0$0                                         =  0000BC GR
+  0 XG$perform$0$0                                              =  0001E3 GR
+  0 XG$performance_main$0$0                                     =  00024E GR
+  0 _JesterMetasprite                                              000022 GR
+  2 _JesterTiles                                                   0008F8 GR
+    _LCDC_REG                                                      ****** GX
+  2 _PerformanceBkgTileMap                                         000790 GR
+  2 _PerformanceBkgTiles                                           000000 GR
+    ___current_base_prop                                           ****** GX
+    ___current_base_tile                                           ****** GX
+    ___current_metasprite                                          ****** GX
+    ___move_metasprite                                             ****** GX
+  7 __xinit__JesterTiles                                           0008F8 R
+  7 __xinit__PerformanceBkgTileMap                                 000790 R
+  7 __xinit__PerformanceBkgTiles                                   000000 R
+  0 _animate_pointer                                               0000BF GR
+  0 _crowd_reaction                                                000105 GR
+  0 _hide_crowd_reaction                                           0001A4 GR
+  0 _init_jester                                                   000000 GR
+  0 _init_performance                                              000202 GR
+  0 _init_performance_bkg                                          0001E4 GR
+  0 _init_pointer                                                  000092 GR
+  0 _init_sprites                                                  0000A7 GR
+    _joypad                                                        ****** GX
+  0 _perform                                                       0001D5 GR
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 8
+Hexadecimal [24-Bits]
+
+Symbol Table
+
+  0 _performance_main                                              00021C GR
+    _performant_delay                                              ****** GX
+    _set_bkg_data                                                  ****** GX
+    _set_bkg_tiles                                                 ****** GX
+    _set_sprite_data                                               ****** GX
+    _shadow_OAM                                                    ****** GX
+
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (GameBoy)                  Page 9
+Hexadecimal [24-Bits]
+
+Area Table
+
+   0 _CODE                                      size    24F   flags    0
+   1 _DATA                                      size      0   flags    0
+   2 _INITIALIZED                               size    B18   flags    0
+   3 _DABS                                      size      0   flags    8
+   4 _HOME                                      size      0   flags    0
+   5 _GSINIT                                    size      0   flags    0
+   6 _GSFINAL                                   size      0   flags    0
+   7 _INITIALIZER                               size    B18   flags    0
+   8 _CABS                                      size      0   flags    8
+
