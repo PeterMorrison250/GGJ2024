@@ -4,7 +4,9 @@
 #include <stdio.h>
 #include "./../Assets/Backgrounds/ExploreBkgTiles.c"
 #include "./../Assets/Backgrounds/ExploreBkgTileMap.c"
+#include "./../Assets/Backgrounds/ExploreHallTileMap.c"
 #include "./../Assets/Backgrounds/CollisionMaps/JesterBedroomCollisionMap.c"
+#include "./../Assets/Backgrounds/CollisionMaps/HallwayCollisionMap.c"
 #include "./../Assets/Sprites/JesterMetasprite.c"
 #include "./../Assets/Sprites/OverworldTiles.c"
 #include "./../Models/GameModel.h"
@@ -22,7 +24,7 @@ void init_explore_sprites()
 }
 
 void init_explore_bkg() {
-    set_bkg_data(0, 43, ExploreBkgTiles);
+    set_bkg_data(0, 55, ExploreBkgTiles);
 }
 
 uint8_t get_collision_index(uint8_t x, uint8_t y) {
@@ -42,18 +44,25 @@ uint8_t room_collision_map(uint8_t x, uint8_t y)
     {
         case 0:
             return JesterBedroomCollisionMap[get_collision_index(x, y)];
+        case 1:
+            return HallwayCollisionMap[get_collision_index(x,y)];
     }
 }
 
 void load_room(uint8_t roomId)
 {
+    ExploreGame->CurrentRoomId = roomId;
     switch (roomId)
     {
         // Jester's Bedroom
         case 0:
-            ExploreGame->CurrentRoomId = 0;
             set_bkg_tiles(0, 0, 30, 28, ExploreBkgTileMap);
             set_spawn_point(6, 8);
+            break;
+        // Hallway
+        case 1:
+            set_bkg_tiles(0, 0, 36, 26, ExploreHallTileMap);
+            set_spawn_point(9, 9);
             break;
     }
 }
@@ -62,7 +71,7 @@ void init_explore()
 {
     init_explore_bkg();
     init_explore_sprites();
-    load_room(0);
+    load_room(1);
     SHOW_SPRITES;
     SHOW_BKG;
     DISPLAY_ON;

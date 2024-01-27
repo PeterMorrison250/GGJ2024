@@ -1,0 +1,15 @@
+# GBDK build files
+*.gb
+*.lst
+*.map
+*.o
+
+# GBDK 2020 build files
+*.sym
+*.adb
+*.asm
+*.cdb
+*.ihx
+
+# IDE Settings
+.vscode
