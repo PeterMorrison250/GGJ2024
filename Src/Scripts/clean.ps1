@@ -1,0 +1,1 @@
+Remove-Item -Path * -Include *.gb, *.lst, *.map, *.o, *.sym, *.adb, *.asm, *.cdb, *.ihx
