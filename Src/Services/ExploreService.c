@@ -5,6 +5,7 @@
 #include "./../Assets/Backgrounds/ExploreBkgTiles.c"
 #include "./../Assets/Backgrounds/ExploreBkgTileMap.c"
 #include "./../Assets/Backgrounds/ExploreHallTileMap.c"
+#include "./../Assets/Backgrounds/ExploreBarracksTileMap.c"
 #include "./../Assets/Backgrounds/CollisionMaps/JesterBedroomCollisionMap.c"
 #include "./../Assets/Backgrounds/CollisionMaps/HallwayCollisionMap.c"
 #include "./../Assets/Sprites/JesterMetasprite.c"
@@ -30,7 +31,7 @@ void init_explore_sprites()
 }
 
 void init_explore_bkg() {
-    set_bkg_data(0, 55, ExploreBkgTiles);
+    set_bkg_data(0, 63, ExploreBkgTiles);
 }
 
 uint8_t get_collision_index(uint8_t x, uint8_t y, uint8_t collisionMapWidth) {
@@ -111,6 +112,18 @@ void load_room(uint8_t roomId, uint8_t previousRoomId)
             Sprite3x = 16;
             Sprite3y = 24;
             move_npcs(roomId, 0, 0);
+            break;
+        // Barracks
+        case 4:
+            set_bkg_tiles(0, 0, 30, 26, ExploreBarracksTileMap);
+            set_spawn_point(6, 10);
+            // Sprite1x = 128;
+            // Sprite1y = 24;
+            // Sprite2x = 32;
+            // Sprite2y = 24;
+            // Sprite3x = 16;
+            // Sprite3y = 24;
+            // move_npcs(roomId, 0, 0);
             break;
         case 0:
         case 1:
