@@ -45,3 +45,11 @@ void fade_in() {
 		performant_delay(5);
 	}
 }
+
+void hide_all_sprites()
+{
+	for(int8_t i=0;i<40;i++)
+	{
+		hide_sprite(i);
+	}
+}
