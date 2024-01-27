@@ -1,8 +1,8 @@
 #include <gb/gb.h>
 
-#define JesterBedroomCollisionMapWidth 18
-#define JesterBedroomCollisionMapHeight 13
-#define JesterBedroomCollisionMapBank 0
+#define HallwayCollisionMapWidth 18
+#define HallwayCollisionMapHeight 13
+#define HallwayCollisionMapBank 0
 
 unsigned char HallwayCollisionMap[] =
 {
@@ -12,9 +12,9 @@ unsigned char HallwayCollisionMap[] =
     0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 
     0,0,0,0, 0,1,0,0,1,0,0,1,0,0,0,0,0,0,
+    0,0,0,0, 68,68,1,1,1,1,1,67,1,0,0,0,0,0,
     0,0,0,0, 1,1,1,1,1,1,1,1,1,0,0,0,0,0,
     0,0,0,0, 1,1,1,1,1,1,1,1,1,0,0,0,0,0,
-    0,0,0,0, 1,1,1,1,1,1,1,1,1,0,0,0,0,0,
-    0,0,0,0, 0,0,0,0,1,0,0,0,0,0,0,0,0,0,
+    0,0,0,0, 0,0,0,0,2,0,0,0,0,0,0,0,0,0,
     0,0,0,0, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 };

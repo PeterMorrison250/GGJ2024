@@ -63,6 +63,34 @@ const unsigned char DeskJokes[][MAX_STRING_SIZE] =
     "not landed...   ",
 };
 
+const unsigned char GuardNepoBaby[][MAX_STRING_SIZE] = 
+{
+    "Guard: wow, that",
+    "was your worst  ",
+    "yet! how'd you  ",
+    "even get this   ",
+    "job?            ",
+    "Jogo: beats me, ",
+    "the recruiter   ",
+    "said it was in  ",
+    "the genes.      ",
+    "Guard: nepo     ",
+    "babies...       "
+};
+
+const unsigned char MaidsNightStables[][MAX_STRING_SIZE] = 
+{
+    "Maid A: I heard ",
+    "she went to the ",
+    "stables!        ",
+    "Maid B: In the  ",
+    "middle of the   ",
+    "night?!         ",
+    "(They seem too  ",
+    "busy to notice  ",
+    "me...)          "
+};
+
 uint8_t i, ii, ip, ib;
 
 uint8_t show_dialog(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t amount_lin, uint8_t last_lin)
@@ -123,15 +151,17 @@ uint8_t find_text(uint8_t textId)
 {
     switch (textId)
     {
-        case 2: return show_dialog(ClassicJokes1590, sizeof(ClassicJokes1590) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
-        case 3: return show_dialog(HarlequinHandbook, sizeof(HarlequinHandbook) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
-        case 4: return show_dialog(DeskJokes, sizeof(DeskJokes) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 64: return show_dialog(ClassicJokes1590, sizeof(ClassicJokes1590) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 65: return show_dialog(HarlequinHandbook, sizeof(HarlequinHandbook) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 66: return show_dialog(DeskJokes, sizeof(DeskJokes) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 67: return show_dialog(GuardNepoBaby, sizeof(GuardNepoBaby) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 68: return show_dialog(MaidsNightStables, sizeof(MaidsNightStables) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
     }
 }
 
 void dialog_main(struct GameModel* MainGame, uint8_t textId)
 {
-    if (textId <= 1) 
+    if (textId <= 1 || textId <= 63) 
     {
         return;
     }
