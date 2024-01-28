@@ -91,6 +91,81 @@ const unsigned char MaidsNightStables[][MAX_STRING_SIZE] =
     "me...)          "
 };
 
+const unsigned char GuardPinterest[][MAX_STRING_SIZE] = 
+{
+    "Guard: What's up",
+    "little guy?     ",
+    "Jogo: Just      ",
+    "looking for some",
+    "inspo.          ",
+    "Guard:You should",
+    "try pinterest.  ",
+    "Jogo: I don't   ",
+    "think I have    ",
+    "that book.      "
+};
+
+const unsigned char GuardsFreePie[][MAX_STRING_SIZE] = 
+{
+    "Guard A:We can't",
+    "use it! It      ",
+    "belongs to his  ",
+    "Magesty, whom we",
+    "work for!       ",
+    "Guard B:He threw",
+    "it away! he does",
+    "not want it. We ",
+    "should have it, ",
+    "Guard A: No, we ",
+    "will return it  ",
+    "to the prince,  ",
+    "he is next in   ",
+    "line to have it.",
+    "Guard B: His    ",
+    "lordship doesn't",
+    "even know about ",
+    "it, plus he gets",
+    "Pie Delivery any",
+    "time he wants.  ",
+    "We do all this  ",
+    "work, and for   ",
+    "what? When did  ",
+    "we get any pie??",
+    "Jogo: Why are   ",
+    "you guys arguing",
+    "Guard B: We     ",
+    "found a free pie",
+    "delivery voucher",
+    "I think we ought",
+    "to treat        ",
+    "ourselves, who  ",
+    "guard the castle",
+    "day and night.  "
+};
+
+const unsigned char KingLaugh[][MAX_STRING_SIZE] = 
+{
+    "Har Har Har! Thy",
+    "wit shines as   ",
+    "brightly as the ",
+    "crown on my head"
+};
+
+const unsigned char KingAngry[][MAX_STRING_SIZE] = 
+{
+    "Thy have tested ",
+    "the very limits ",
+    "of my patience, ",
+    "little jester!  "
+};
+
+const unsigned char KingBored[][MAX_STRING_SIZE] = 
+{
+    "Honk... shoo... ",
+    "mimimi.. huh you",
+    "still up there? "
+};
+
 uint8_t i, ii, ip, ib;
 
 uint8_t show_dialog(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t amount_lin, uint8_t last_lin)
@@ -156,6 +231,11 @@ uint8_t find_text(uint8_t textId)
         case 66: return show_dialog(DeskJokes, sizeof(DeskJokes) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
         case 67: return show_dialog(GuardNepoBaby, sizeof(GuardNepoBaby) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
         case 68: return show_dialog(MaidsNightStables, sizeof(MaidsNightStables) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 69: return show_dialog(GuardPinterest, sizeof(GuardPinterest) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 70: return show_dialog(GuardsFreePie, sizeof(GuardsFreePie) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 71: return show_dialog(KingBored, sizeof(KingBored) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 72: return show_dialog(KingLaugh, sizeof(KingLaugh) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 73: return show_dialog(KingAngry, sizeof(KingAngry) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
     }
 }
 

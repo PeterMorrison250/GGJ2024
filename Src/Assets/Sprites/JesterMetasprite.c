@@ -130,6 +130,14 @@ const metasprite_t KnightDownMetasprite[] = {
 	METASPR_TERM
 };
 
+const metasprite_t KnightRightMetasprite[] = {
+    {.dy=8, .dx=-8, .dtile=20, .props=0},
+    {.dy=0, .dx=8, .dtile=21, .props=0},
+    {.dy=8, .dx=-8, .dtile=22, .props=0},
+    {.dy=0, .dx=8, .dtile=23, .props=128},
+	METASPR_TERM
+};
+
 const metasprite_t MaidDownMetasprite[] = {
     {.dy=8, .dx=-8, .dtile=24, .props=0},
     {.dy=0, .dx=8, .dtile=24, .props=32},

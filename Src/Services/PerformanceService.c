@@ -7,6 +7,7 @@
 #include "./../Assets/Sprites/JesterTiles.c"
 #include "./../Models/GameModel.h"
 #include "CoreService.h"
+#include "DialogService.h"
 
 const metasprite_t JesterFullMetasprite[] = {
     // line 1
@@ -72,25 +73,23 @@ void animate_pointer(uint8_t currentScore, uint8_t newScore)
         {
             currentScore++;
             move_sprite(27, 84 + (currentScore * 8), 136);
-            performant_delay(20);
+            performant_delay(15);
         }
         return;
     }
-
     if (currentScore > newScore)
     {
-        while (currentScore > newScore)
-        {
-            currentScore--;
-            move_sprite(27, 84 + (currentScore * 8), 136);
-            performant_delay(20);
-        }
-        return;
+            while (currentScore > newScore)
+            {
+                currentScore--;
+                move_sprite(27, 84 + (currentScore * 8), 136);
+                performant_delay(15);
+            }
+            return;
     }
 
-    performant_delay(20);
-    return;
-    
+    performant_delay(15);
+    return;   
 }
 
 void crowd_reaction(uint8_t score)
@@ -136,9 +135,41 @@ void hide_crowd_reaction()
         move_metasprite_ex(JesterFullMetasprite, 32, 0, 28, 0, 0);
 }
 
+uint8_t choose_joke()
+{
+    int8_t newScore = 0;
+    switch (PerformanceGame->Round)
+    {
+        case 0: 
+            newScore = PerformanceGame->CurrentScore + 4;
+            break;
+        case 1: 
+            newScore = PerformanceGame->CurrentScore - 2;
+            break;
+        case 2: 
+            newScore = PerformanceGame->CurrentScore + 5;
+            break;
+        case 3: 
+            newScore = PerformanceGame->CurrentScore - 1;
+            break;
+        default:
+            newScore = 0;
+    }
+    if (newScore > 9)
+    {
+        return 9;
+    }
+    if (newScore < 0)
+    {
+        return 0;
+    }
+
+    return newScore;
+}
+
 void perform()
 {
-    int8_t newScore = 5; // TODO: Create Perform Screen
+    int8_t newScore = choose_joke();
     crowd_reaction(newScore);
     animate_pointer(PerformanceGame->CurrentScore, newScore);
     PerformanceGame->CurrentScore = newScore;
@@ -154,8 +185,46 @@ void init_performance()
 {
     init_performance_bkg();
     init_sprites();
+    PerformanceGame->CurrentScore = 0;
+    PerformanceGame->Round = 0;
     DISPLAY_ON;
     SHOW_BKG;
+}
+
+void close_performance()
+{
+    fade_out();
+    HIDE_SPRITES;
+    DISPLAY_OFF;
+    PerformanceGame->IsPerformanceMode = FALSE;
+}
+
+void end_of_round()
+{
+    if (PerformanceGame->Round < 3)
+    {
+        PerformanceGame->Round++;
+        return;
+    }
+
+    if (PerformanceGame->CurrentScore < 4)
+    {
+        dialog_main(PerformanceGame, 71);
+    }
+    else if (PerformanceGame->CurrentScore > 5)
+    {
+        dialog_main(PerformanceGame, 73);
+    }
+    else 
+    {
+        dialog_main(PerformanceGame, 72); 
+    }
+    if (PerformanceGame->IsDialogVisible == FALSE && PerformanceGame->OpenDialogLines == FALSE)
+    {
+        close_performance();
+    }
+    
+    return;
 }
 
 void performance_main(struct GameModel* MainGame)
@@ -167,13 +236,30 @@ void performance_main(struct GameModel* MainGame)
     
     PerformanceGame = MainGame;
     init_performance();
+    move_bkg(0,0);
+    SHOW_SPRITES;
+    fade_in();
+    DISPLAY_ON;
 
     while (PerformanceGame->IsPerformanceMode == TRUE) 
     {
+        if(PerformanceGame->KeyDown)
+        {
+            waitpadup();
+            PerformanceGame->KeyDown = FALSE;
+        }
         switch (joypad())
         {
             case J_A:
-                perform();
+                PerformanceGame->KeyDown = TRUE;
+                if (PerformanceGame->IsDialogVisible == FALSE)
+                {
+                    perform();
+                }
+                end_of_round();
+                break;
+            case J_B:
+                close_performance();
                 break;
         }
     }

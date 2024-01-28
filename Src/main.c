@@ -15,17 +15,19 @@ void init_game(struct GameModel* Game)
     Game->Y = 0;
     Game->IsDialogVisible = FALSE;
     Game->OpenDialogLines = 0;
+    Game->Round = 0;
 }
+
+
 
 void main()
 {
-    fade_in();
     struct GameModel Game;
     init_game(&Game);
 
     while (1)
     {   
         explore_main(&Game);
-        //performance_main(&Game);
+        performance_main(&Game);
     }
 }
