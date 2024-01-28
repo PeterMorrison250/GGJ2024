@@ -9,6 +9,7 @@ typedef struct GameModel {
     // Performance
     uint8_t CurrentScore;
     UBYTE IsPerformanceMode;
+    uint8_t Round;
 
     // Explore
     uint8_t X;

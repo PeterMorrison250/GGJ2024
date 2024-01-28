@@ -5,8 +5,10 @@
 #include "./../Assets/Backgrounds/ExploreBkgTiles.c"
 #include "./../Assets/Backgrounds/ExploreBkgTileMap.c"
 #include "./../Assets/Backgrounds/ExploreHallTileMap.c"
+#include "./../Assets/Backgrounds/ExploreBarracksTileMap.c"
 #include "./../Assets/Backgrounds/CollisionMaps/JesterBedroomCollisionMap.c"
 #include "./../Assets/Backgrounds/CollisionMaps/HallwayCollisionMap.c"
+#include "./../Assets/Backgrounds/CollisionMaps/BarracksCollisionMap.c"
 #include "./../Assets/Sprites/JesterMetasprite.c"
 #include "./../Assets/Sprites/OverworldTiles.c"
 #include "./../Models/GameModel.h"
@@ -23,6 +25,8 @@ uint8_t Sprite2x;
 uint8_t Sprite2y;
 uint8_t Sprite3x;
 uint8_t Sprite3y;
+uint8_t Sprite4x;
+uint8_t Sprite4y;
 
 void init_explore_sprites()
 {
@@ -30,7 +34,7 @@ void init_explore_sprites()
 }
 
 void init_explore_bkg() {
-    set_bkg_data(0, 55, ExploreBkgTiles);
+    set_bkg_data(0, 63, ExploreBkgTiles);
 }
 
 uint8_t get_collision_index(uint8_t x, uint8_t y, uint8_t collisionMapWidth) {
@@ -52,6 +56,8 @@ uint8_t room_collision_map(uint8_t x, uint8_t y)
             return JesterBedroomCollisionMap[get_collision_index(x, y, JesterBedroomCollisionMapWidth)];
         case 3:
             return HallwayCollisionMap[get_collision_index(x, y, HallwayCollisionMapWidth)];
+        case 4:
+            return BarracksCollisionMap[get_collision_index(x, y, BarracksCollisionMapWidth)];
         case 0:
         case 1:
         default: return;
@@ -66,6 +72,11 @@ void move_npcs(uint8_t roomId, int8_t x, int8_t y)
             move_metasprite_ex(KnightDownMetasprite, 0, 0, 6, Sprite1x += x, Sprite1y += y);
             move_metasprite_flipx(MaidRightMetasprite, 0, 0, 10, Sprite2x += x, Sprite2y += y);
             move_metasprite_ex(MaidRightMetasprite, 0, 0, 14, Sprite3x += x, Sprite3y += y);
+            break;
+        case 4:
+            move_metasprite_flipx(KnightRightMetasprite, 0, 0, 6, Sprite1x += x, Sprite1y += y);
+            move_metasprite_ex(KnightRightMetasprite, 0, 0, 10, Sprite2x += x, Sprite2y += y);
+            move_metasprite_flipx(KnightRightMetasprite, 0, 0, 14, Sprite3x += x, Sprite3y += y);
             break;
         case 0:
         case 1:
@@ -91,24 +102,45 @@ void load_room(uint8_t roomId, uint8_t previousRoomId)
                 case 3:
                     set_spawn_point(9, 5);
             }
-            
-            Sprite1x = 0;
-            Sprite1y = 0;
-            Sprite2x = 0;
-            Sprite2y = 0;
-            Sprite3x = 0;
-            Sprite3y = 0;
-            move_npcs(roomId, 0, 0);
             break;
         // Hallway
         case 3:
             set_bkg_tiles(0, 0, 36, 26, ExploreHallTileMap);
-            set_spawn_point(9, 9);
-            Sprite1x = 128;
-            Sprite1y = 24;
-            Sprite2x = 32;
+            switch (previousRoomId)
+            {
+                case 2:
+                default:
+                    Sprite1x = 128;
+                    Sprite1y = 24;
+                    Sprite2x = 32;
+                    Sprite2y = 24;
+                    Sprite3x = 16;
+                    Sprite3y = 24;
+
+                    set_spawn_point(9, 9);
+                    break;
+                case 4:
+                    Sprite1x = 128;
+                    Sprite1y = 88;
+                    Sprite2x = 32;
+                    Sprite2y = 88;
+                    Sprite3x = 16;
+                    Sprite3y = 88;
+                    set_spawn_point(9, 5);
+                    break;
+            }
+
+            move_npcs(roomId, 0, 0);
+            break;
+        // Barracks
+        case 4:
+            set_bkg_tiles(0, 0, 30, 26, ExploreBarracksTileMap);
+            set_spawn_point(6, 10);
+            Sprite1x = 112;
+            Sprite1y = 56;
+            Sprite2x = 128;
             Sprite2y = 24;
-            Sprite3x = 16;
+            Sprite3x = 144;
             Sprite3y = 24;
             move_npcs(roomId, 0, 0);
             break;
@@ -127,6 +159,7 @@ void init_explore()
     SHOW_SPRITES;
     SHOW_BKG;
     DISPLAY_ON;
+    fade_in();
 }
 
 UBYTE is_colliding(uint8_t x, uint8_t y)
@@ -143,6 +176,30 @@ void check_warp()
         fade_out();
         load_room(currentTile, ExploreGame->CurrentRoomId);
         fade_in();
+    }
+}
+
+void hide_meta(uint8_t firstSprite)
+{
+    for (uint8_t i = 0; i < 4; i++)
+    {
+        hide_sprite(firstSprite + i);
+    }
+}
+
+void hide_sprites_behind_dialog() 
+{
+    if (Sprite1y > 96)
+    {
+        hide_meta(6);
+    }
+    if (Sprite2y > 96)
+    {
+        hide_meta(10);
+    }
+    if (Sprite3y > 96)
+    {
+        hide_meta(14);
     }
 }
 
@@ -259,10 +316,17 @@ void explore_main(struct GameModel* MainGame)
                     break;
                 case J_A:
                     ExploreGame->KeyDown = TRUE;
+                    hide_sprites_behind_dialog();
                     dialog_main(ExploreGame, check_in_front());
+                    break;
+                case J_B:
+                    ExploreGame->KeyDown = TRUE;
+                    fade_out();
+                    HIDE_SPRITES;
+                    DISPLAY_OFF;
+                    ExploreGame->IsPerformanceMode = TRUE;
                     break;
             }
         }     
     }
 }
-
