@@ -2,6 +2,8 @@
 #include "./../Assets/Dialogs/BkgTiles.c"
 #include "./../Assets/Dialogs/DialogWindowTileMap.c"
 #include "./../Models/GameModel.h"
+#include "./../Assets/Backgrounds/PageBkgTileMap.c"
+#include "TextService.c"
 
 #define MAX_STRING_SIZE 17
 
@@ -222,11 +224,43 @@ uint8_t show_dialog(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t amount_
     return i + last_lin;
 }
 
+uint8_t show_option(unsigned char text_lines[][MAX_STRING_SIZE],uint8_t start_line, uint8_t end_line, uint8_t max_lines, uint8_t y)
+{
+    uint8_t count = 0;
+    uint8_t letter = 0;
+    for (start_line; start_line <= end_line; start_line++) {
+        for (letter = 0; letter < 16; letter++) {
+            set_win_data((0x10 * (count + 1)) + letter, 1, CharTiles[text_lines[start_line][letter] - char_offset]);
+            set_win_tile_xy(1 + letter, y + start_line, (0x10 * (start_line + 1)) + letter);
+            
+        }
+        count++;
+    }
+
+    return count;
+}
+
+uint8_t show_page(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t max_size)
+{
+    DialogGame->IsDialogVisible = TRUE;
+
+    set_bkg_data(0, 1, BlackTile);
+    set_win_tiles(0, 0, 18, 9, PageBkgTileMap);
+
+    show_option(text_lines, 0, 14, max_size, 1);
+
+    //show_option(text_lines, 3, 5, max_size, 8);
+
+    SHOW_WIN;
+
+    return FALSE;
+}
+
 uint8_t find_text(uint8_t textId)
 {
     switch (textId)
     {
-        case 64: return show_dialog(ClassicJokes1590, sizeof(ClassicJokes1590) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
+        case 64: return show_page(TextLookup, sizeof(TextLookup) / MAX_STRING_SIZE);
         case 65: return show_dialog(HarlequinHandbook, sizeof(HarlequinHandbook) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
         case 66: return show_dialog(DeskJokes, sizeof(DeskJokes) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
         case 67: return show_dialog(GuardNepoBaby, sizeof(GuardNepoBaby) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
