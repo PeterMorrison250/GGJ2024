@@ -2,6 +2,7 @@
     "files.associations": {
         "string.h": "c",
         "coreservice.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "pagemodel.h": "c"
     }
 }

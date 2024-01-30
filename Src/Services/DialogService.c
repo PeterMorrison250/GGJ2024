@@ -2,6 +2,8 @@
 #include "./../Assets/Dialogs/BkgTiles.c"
 #include "./../Assets/Dialogs/DialogWindowTileMap.c"
 #include "./../Models/GameModel.h"
+#include "./../Models/PageModel.h"
+#include "./../Models/JokeModel.h"
 #include "./../Assets/Backgrounds/PageBkgTileMap.c"
 #include "TextService.c"
 
@@ -224,43 +226,81 @@ uint8_t show_dialog(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t amount_
     return i + last_lin;
 }
 
-uint8_t show_option(unsigned char text_lines[][MAX_STRING_SIZE],uint8_t start_line, uint8_t end_line, uint8_t max_lines, uint8_t y)
-{
-    uint8_t count = 0;
-    uint8_t letter = 0;
-    for (start_line; start_line <= end_line; start_line++) {
-        for (letter = 0; letter < 16; letter++) {
-            set_win_data((0x10 * (count + 1)) + letter, 1, CharTiles[text_lines[start_line][letter] - char_offset]);
-            set_win_tile_xy(1 + letter, y + start_line, (0x10 * (start_line + 1)) + letter);
-            
-        }
-        count++;
-    }
+// uint8_t show_option(unsigned char text_lines[][MAX_STRING_SIZE],uint8_t start_line, uint8_t end_line, uint8_t tile_start, uint8_t y)
+// {
+//     uint8_t count = 0;
+//     uint8_t letter = 0;
+//     for (start_line; start_line <= end_line; start_line++) {
+//         for (letter = 0; letter < 16; letter++) {
+//             set_win_data((0x10 * (tile_start + count + 1)) + letter, 1, CharTiles[text_lines[start_line][letter] - char_offset]);
+//             set_win_tile_xy(1 + letter, y + count, (0x10 * (tile_start + count + 1)) + letter);
+//         }
+//         count++;
+//     }
 
-    return count;
+//     return count;
+// }
+
+struct PageModel page;
+
+#define MAX_TEXT_LINES 16
+
+uint8_t show_option(unsigned char text_lines[][MAX_STRING_SIZE], struct JokeModel joke)
+{
+    if (page.TileY + (joke.LineEnd - joke.LineStart) >= MAX_TEXT_LINES)
+    {
+        page.TileY = MAX_TEXT_LINES;
+        return FALSE;
+    }
+    uint8_t currentLine = joke.LineStart;
+
+    uint8_t letter = 0;
+    for (currentLine; currentLine <= joke.LineEnd; currentLine++) {
+        page.VramLine++;
+        for (letter = 0; letter < 16; letter++) {
+            set_win_data((0x10 * page.VramLine) + letter, 1, CharTiles[text_lines[currentLine][letter] - char_offset]);
+            set_win_tile_xy(1 + letter, page.TileY, (0x10 * page.VramLine) + letter);
+        }
+        page.TileY++;
+    }
+    page.TileY++;
+    return FALSE;
 }
 
-uint8_t show_page(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t max_size)
+uint8_t show_page(unsigned char textLines[][MAX_STRING_SIZE], uint8_t textLinesSize, struct JokeModel jokes[], uint8_t jokesSize)
 {
+    HIDE_SPRITES;
     DialogGame->IsDialogVisible = TRUE;
-
     set_bkg_data(0, 1, BlackTile);
     set_win_tiles(0, 0, 18, 9, PageBkgTileMap);
 
-    show_option(text_lines, 0, 14, max_size, 1);
+    page.TileY = 1;
+    page.VramLine = 0;
+    uint8_t jokeCount = 0;
 
-    //show_option(text_lines, 3, 5, max_size, 8);
+    while (page.TileY < MAX_TEXT_LINES && jokeCount < jokesSize)
+    {
+        show_option(textLines, jokes[jokeCount]);
+        jokeCount++;
+    }
 
     SHOW_WIN;
-
     return FALSE;
 }
 
 uint8_t find_text(uint8_t textId)
 {
+    struct JokeModel jokes[] = {
+        {.LineStart=0, .LineEnd=2},
+        {.LineStart=3, .LineEnd=4},
+        {.LineStart=5, .LineEnd=9},
+        {.LineStart=5, .LineEnd=7},
+    };
+    uint8_t jokesSize = 4;
+
     switch (textId)
     {
-        case 64: return show_page(TextLookup, sizeof(TextLookup) / MAX_STRING_SIZE);
+        case 64: return show_page(TextLookup, sizeof(TextLookup) / MAX_STRING_SIZE, jokes, jokesSize);
         case 65: return show_dialog(HarlequinHandbook, sizeof(HarlequinHandbook) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
         case 66: return show_dialog(DeskJokes, sizeof(DeskJokes) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
         case 67: return show_dialog(GuardNepoBaby, sizeof(GuardNepoBaby) / MAX_STRING_SIZE, DialogGame->OpenDialogLines);
