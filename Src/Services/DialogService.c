@@ -6,6 +6,7 @@
 #include "./../Models/JokeModel.h"
 #include "./../Assets/Backgrounds/PageBkgTileMap.c"
 #include "TextService.c"
+#include "CoreService.h"
 
 #define MAX_STRING_SIZE 17
 
@@ -226,22 +227,53 @@ uint8_t show_dialog(unsigned char text_lines[][MAX_STRING_SIZE], uint8_t amount_
     return i + last_lin;
 }
 
-// uint8_t show_option(unsigned char text_lines[][MAX_STRING_SIZE],uint8_t start_line, uint8_t end_line, uint8_t tile_start, uint8_t y)
-// {
-//     uint8_t count = 0;
-//     uint8_t letter = 0;
-//     for (start_line; start_line <= end_line; start_line++) {
-//         for (letter = 0; letter < 16; letter++) {
-//             set_win_data((0x10 * (tile_start + count + 1)) + letter, 1, CharTiles[text_lines[start_line][letter] - char_offset]);
-//             set_win_tile_xy(1 + letter, y + count, (0x10 * (tile_start + count + 1)) + letter);
-//         }
-//         count++;
-//     }
-
-//     return count;
-// }
-
 struct PageModel page;
+
+void select_option(struct JokeModel jokes[], uint8_t jokesSize)
+{
+    hide_all_sprites();
+    set_sprite_tile(0, 2);
+    
+	SHOW_SPRITES;
+    uint8_t lines = 0;
+    uint8_t count = 0;
+    UBYTE IsKeyDown = FALSE;
+    //lines += (jokes[lines].LineEnd - jokes[lines].LineStart);
+    move_sprite(0, 16, 24);
+
+    while (1) {
+        if(IsKeyDown)
+        {
+            waitpadup();
+            IsKeyDown = FALSE;
+        }
+        switch (joypad())
+        {
+            case J_DOWN:
+                IsKeyDown = TRUE;
+                if (count + 1 == page.JokeCount)
+                {
+                    break;
+                }
+                lines += (jokes[count].LineEnd - jokes[count].LineStart) + 2;
+                move_sprite(0, 16, 24 + (lines * 8));
+                count++;
+                break;
+            case J_UP:
+                IsKeyDown = TRUE;
+                if (count == 0) 
+                {
+                    break;
+                }
+                count--;
+                lines -= (jokes[count].LineEnd - jokes[count].LineStart) + 2;
+                move_sprite(0, 16, (lines * 8) + 24);
+                break;
+            case J_A:
+            //return count;
+        }
+    }
+}
 
 #define MAX_TEXT_LINES 16
 
@@ -259,11 +291,12 @@ uint8_t show_option(unsigned char text_lines[][MAX_STRING_SIZE], struct JokeMode
         page.VramLine++;
         for (letter = 0; letter < 16; letter++) {
             set_win_data((0x10 * page.VramLine) + letter, 1, CharTiles[text_lines[currentLine][letter] - char_offset]);
-            set_win_tile_xy(1 + letter, page.TileY, (0x10 * page.VramLine) + letter);
+            set_win_tile_xy(2 + letter, page.TileY, (0x10 * page.VramLine) + letter);
         }
         page.TileY++;
     }
     page.TileY++;
+    page.JokeCount++;
     return FALSE;
 }
 
@@ -276,15 +309,18 @@ uint8_t show_page(unsigned char textLines[][MAX_STRING_SIZE], uint8_t textLinesS
 
     page.TileY = 1;
     page.VramLine = 0;
-    uint8_t jokeCount = 0;
+    page.JokeCount = 0;
 
-    while (page.TileY < MAX_TEXT_LINES && jokeCount < jokesSize)
+    while (page.TileY < MAX_TEXT_LINES && page.JokeCount < jokesSize)
     {
-        show_option(textLines, jokes[jokeCount]);
-        jokeCount++;
+        show_option(textLines, jokes[page.JokeCount]);
+        
     }
-
+    
     SHOW_WIN;
+
+    select_option(jokes, jokesSize);
+
     return FALSE;
 }
 
